@@ -14,8 +14,12 @@
 export default {
   methods: {
     goToDayBook() {
+      try {
       console.log('CALL TO DAYBOOK ROUTE')
       this.$router.push({ name: 'daybook' })
+      } catch(err) {
+        console.log('ERROR', err);
+      }
     }
   }
 }

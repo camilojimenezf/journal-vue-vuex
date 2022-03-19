@@ -9,5 +9,11 @@ export default {
         path: ':id',
         name: 'entry',
         component: () => import('@/modules/daybook/views/EntryView.vue'),
+        // mapear el id de la ruta a los props.
+        props: ( route ) => {
+            return {
+                id: route.params.id
+            }
+        }
     }]
 }
