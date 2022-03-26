@@ -20,11 +20,12 @@
   </template>
   <Fab icon="fa-save" @on:click="saveEntry" />
 
-  <!-- <img
-    src="https://media.revistagq.com/photos/619d0eeffebf43cfc997b6c7/3:2/w_1332,h_888,c_limit/peaky%20blinders.png"
+  <img
+    v-if="entry.picture && !localImage"
+    :src="entry.picture"
     alt="entry-picture"
     class="img-thumbnail"
-  > -->
+  >
   <img
     v-if="localImage"
     :src="localImage"
@@ -95,6 +96,7 @@ export default {
         this.$router.push({ name: 'entry', params: { id } });
       }
 
+      this.file = null;
       Swal.fire('Guardado', 'Entrada registrada con éxito', 'success');
     },
     async onDeleteEntry() {
